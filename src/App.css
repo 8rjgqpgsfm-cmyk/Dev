@@ -1,23 +1,30 @@
 /* ============================================
-   FlashLearn - Learning Cards App Styles
+   FlashLearn - Dark Dashboard Theme
+   Inspired by cybersecurity dashboard design
    ============================================ */
 
 :root {
-  --primary: #6c5ce7;
-  --primary-dark: #5a4bd1;
-  --primary-light: #a29bfe;
-  --success: #00b894;
-  --success-dark: #00a381;
-  --danger: #e17055;
-  --danger-dark: #d45a3c;
-  --warning: #fdcb6e;
-  --bg: #f8f9ff;
-  --card-bg: #ffffff;
-  --text: #2d3436;
-  --text-light: #636e72;
-  --border: #e0e0e8;
-  --shadow: 0 2px 12px rgba(108, 92, 231, 0.08);
-  --shadow-hover: 0 4px 20px rgba(108, 92, 231, 0.15);
+  --bg-deep: #0b1929;
+  --bg-card: rgba(13, 27, 46, 0.85);
+  --bg-card-hover: rgba(17, 34, 56, 0.95);
+  --bg-input: rgba(8, 20, 36, 0.7);
+  --border-glow: rgba(56, 189, 248, 0.25);
+  --border-subtle: rgba(56, 189, 248, 0.12);
+  --accent-teal: #38bdf8;
+  --accent-teal-dim: rgba(56, 189, 248, 0.6);
+  --accent-gold: #f0b429;
+  --accent-gold-dim: rgba(240, 180, 41, 0.15);
+  --success: #34d399;
+  --success-dim: rgba(52, 211, 153, 0.15);
+  --danger: #f87171;
+  --danger-dim: rgba(248, 113, 113, 0.15);
+  --warning: #fbbf24;
+  --warning-dim: rgba(251, 191, 36, 0.15);
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-dim: #64748b;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px rgba(56, 189, 248, 0.08);
   --radius: 12px;
   --radius-sm: 8px;
 }
@@ -30,8 +37,11 @@
 
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 80% 0%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 100%, rgba(56, 189, 248, 0.04) 0%, transparent 50%);
+  color: var(--text-primary);
   min-height: 100vh;
 }
 
@@ -51,11 +61,11 @@ body {
 .app-header h1 {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--text-primary);
 }
 
 .app-subtitle {
-  color: var(--text-light);
+  color: var(--text-secondary);
   margin-top: 4px;
   font-size: 0.95rem;
 }
@@ -73,52 +83,59 @@ body {
 }
 
 .btn:disabled {
-  opacity: 0.5;
+  opacity: 0.35;
   cursor: not-allowed;
 }
 
 .btn-primary {
-  background: var(--primary);
-  color: white;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(56, 189, 248, 0.35));
+  color: var(--accent-teal);
+  border: 1px solid var(--border-glow);
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: var(--primary-dark);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(56, 189, 248, 0.45));
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
   transform: translateY(-1px);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--primary);
-  border: 2px solid var(--border);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
 }
 
 .btn-secondary:hover {
-  border-color: var(--primary);
-  background: rgba(108, 92, 231, 0.05);
+  border-color: var(--border-glow);
+  color: var(--accent-teal);
+  background: rgba(56, 189, 248, 0.05);
 }
 
 .btn-correct {
-  background: var(--success);
-  color: white;
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.2), rgba(52, 211, 153, 0.35));
+  color: var(--success);
+  border: 1px solid rgba(52, 211, 153, 0.3);
   padding: 14px 32px;
   font-size: 1rem;
 }
 
 .btn-correct:hover {
-  background: var(--success-dark);
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.3), rgba(52, 211, 153, 0.5));
+  box-shadow: 0 0 16px rgba(52, 211, 153, 0.2);
   transform: translateY(-1px);
 }
 
 .btn-incorrect {
-  background: var(--danger);
-  color: white;
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(248, 113, 113, 0.35));
+  color: var(--danger);
+  border: 1px solid rgba(248, 113, 113, 0.3);
   padding: 14px 32px;
   font-size: 1rem;
 }
 
 .btn-incorrect:hover {
-  background: var(--danger-dark);
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.3), rgba(248, 113, 113, 0.5));
+  box-shadow: 0 0 16px rgba(248, 113, 113, 0.2);
   transform: translateY(-1px);
 }
 
@@ -133,17 +150,18 @@ body {
 }
 
 .btn-icon:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(56, 189, 248, 0.1);
 }
 
 /* --- Cards (containers) --- */
 
 .card {
-  background: var(--card-bg);
+  background: var(--bg-card);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  border: 1px solid var(--border-subtle);
   padding: 20px;
-  transition: box-shadow 0.2s;
+  transition: all 0.3s;
+  box-shadow: var(--shadow);
 }
 
 /* --- Section Header --- */
@@ -159,35 +177,46 @@ body {
 .section-header h2 {
   flex: 1;
   font-size: 1.3rem;
+  color: var(--text-primary);
 }
 
 /* --- Form Card --- */
 
 .form-card {
   margin-bottom: 20px;
+  border-color: var(--border-glow);
 }
 
 .form-card h3 {
   margin-bottom: 12px;
   font-size: 1.1rem;
+  color: var(--text-primary);
 }
 
 .form-card input,
 .form-card textarea {
   width: 100%;
   padding: 10px 14px;
-  border: 2px solid var(--border);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   font-size: 0.9rem;
   font-family: inherit;
   transition: border-color 0.2s;
   margin-bottom: 10px;
+  background: var(--bg-input);
+  color: var(--text-primary);
+}
+
+.form-card input::placeholder,
+.form-card textarea::placeholder {
+  color: var(--text-dim);
 }
 
 .form-card input:focus,
 .form-card textarea:focus {
   outline: none;
-  border-color: var(--primary-light);
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.15);
 }
 
 .form-actions {
@@ -206,7 +235,7 @@ body {
   display: block;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-light);
+  color: var(--text-secondary);
   margin-bottom: 4px;
 }
 
@@ -215,7 +244,7 @@ body {
 .empty-state {
   text-align: center;
   padding: 60px 20px;
-  color: var(--text-light);
+  color: var(--text-secondary);
 }
 
 .empty-icon {
@@ -225,7 +254,7 @@ body {
 
 .empty-state h3 {
   margin-bottom: 8px;
-  color: var(--text);
+  color: var(--text-primary);
 }
 
 /* --- Deck Grid --- */
@@ -242,7 +271,8 @@ body {
 }
 
 .deck-card:hover {
-  box-shadow: var(--shadow-hover);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-glow), var(--shadow);
 }
 
 .deck-card-header {
@@ -255,6 +285,7 @@ body {
 .deck-card-header h3 {
   font-size: 1.1rem;
   word-break: break-word;
+  color: var(--text-primary);
 }
 
 .deck-actions {
@@ -264,7 +295,7 @@ body {
 }
 
 .deck-description {
-  color: var(--text-light);
+  color: var(--text-secondary);
   font-size: 0.85rem;
   margin-bottom: 12px;
   line-height: 1.4;
@@ -279,7 +310,7 @@ body {
 }
 
 .stat {
-  color: var(--text-light);
+  color: var(--text-secondary);
 }
 
 .stat-num {
@@ -288,11 +319,11 @@ body {
 }
 
 .stat-new .stat-num {
-  color: var(--primary);
+  color: var(--accent-teal);
 }
 
 .stat-learning .stat-num {
-  color: var(--warning);
+  color: var(--accent-gold);
 }
 
 .stat-mastered .stat-num {
@@ -321,7 +352,8 @@ body {
 }
 
 .flashcard-preview:hover {
-  box-shadow: var(--shadow-hover);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-glow), var(--shadow);
 }
 
 .flashcard-preview-content {
@@ -341,7 +373,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--text-light);
+  color: var(--text-dim);
   margin-bottom: 4px;
 }
 
@@ -349,11 +381,12 @@ body {
   font-size: 0.9rem;
   line-height: 1.4;
   word-break: break-word;
+  color: var(--text-primary);
 }
 
 .flashcard-divider {
   width: 1px;
-  background: var(--border);
+  background: var(--border-subtle);
   align-self: stretch;
 }
 
@@ -363,7 +396,7 @@ body {
   align-items: center;
   margin-top: 12px;
   padding-top: 12px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .confidence-badge {
@@ -374,23 +407,27 @@ body {
 }
 
 .confidence-badge.new {
-  background: rgba(108, 92, 231, 0.1);
-  color: var(--primary);
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--accent-teal);
+  border: 1px solid rgba(56, 189, 248, 0.2);
 }
 
 .confidence-badge.learning {
-  background: rgba(253, 203, 110, 0.2);
-  color: #e17055;
+  background: var(--warning-dim);
+  color: var(--warning);
+  border: 1px solid rgba(251, 191, 36, 0.25);
 }
 
 .confidence-badge.familiar {
-  background: rgba(0, 184, 148, 0.1);
+  background: var(--success-dim);
   color: var(--success);
+  border: 1px solid rgba(52, 211, 153, 0.25);
 }
 
 .confidence-badge.mastered {
   background: var(--success);
-  color: white;
+  color: #0b1929;
+  border: 1px solid var(--success);
 }
 
 .card-actions {
@@ -417,28 +454,30 @@ body {
   flex: 1;
   text-align: center;
   font-size: 1.1rem;
+  color: var(--text-primary);
 }
 
 .study-progress-text {
   font-size: 0.9rem;
-  color: var(--text-light);
+  color: var(--accent-gold);
   font-weight: 600;
 }
 
 .progress-bar {
   width: 100%;
-  height: 6px;
-  background: var(--border);
-  border-radius: 3px;
+  height: 4px;
+  background: rgba(56, 189, 248, 0.1);
+  border-radius: 2px;
   overflow: hidden;
   margin-bottom: 32px;
 }
 
 .progress-fill {
   height: 100%;
-  background: var(--primary);
-  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent-teal), rgba(56, 189, 248, 0.7));
+  border-radius: 2px;
   transition: width 0.3s ease;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
 }
 
 /* --- Flashcard 3D Flip --- */
@@ -480,14 +519,16 @@ body {
   justify-content: center;
   padding: 32px;
   border-radius: var(--radius);
+  border: 1px solid var(--border-glow);
+  background: var(--bg-card);
   box-shadow: var(--shadow);
-  background: var(--card-bg);
 }
 
 .flashcard-back {
   transform: rotateY(180deg);
-  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-  color: white;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(13, 27, 46, 0.95));
+  border-color: var(--accent-teal);
+  box-shadow: var(--shadow), 0 0 30px rgba(56, 189, 248, 0.15);
 }
 
 .flashcard-label {
@@ -498,7 +539,11 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  opacity: 0.5;
+  color: var(--text-dim);
+}
+
+.flashcard-back .flashcard-label {
+  color: var(--accent-teal-dim);
 }
 
 .flashcard-text {
@@ -506,14 +551,18 @@ body {
   text-align: center;
   line-height: 1.5;
   word-break: break-word;
+  color: var(--text-primary);
+}
+
+.flashcard-back .flashcard-text {
+  color: var(--accent-teal);
 }
 
 .flashcard-hint {
   position: absolute;
   bottom: 16px;
   font-size: 0.75rem;
-  color: var(--text-light);
-  opacity: 0.6;
+  color: var(--text-dim);
 }
 
 .study-actions {
@@ -536,11 +585,13 @@ body {
 .results-card {
   text-align: center;
   padding: 40px 32px;
+  border-color: var(--border-glow);
 }
 
 .results-card h2 {
   margin-bottom: 24px;
   font-size: 1.5rem;
+  color: var(--text-primary);
 }
 
 .results-score {
@@ -553,16 +604,18 @@ body {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(56, 189, 248, 0.05));
+  border: 2px solid var(--accent-teal);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
 }
 
 .score-number {
   font-size: 2rem;
   font-weight: 700;
-  color: white;
+  color: var(--accent-gold);
 }
 
 .results-stats {
@@ -585,7 +638,7 @@ body {
 
 .result-label {
   font-size: 0.8rem;
-  color: var(--text-light);
+  color: var(--text-secondary);
   margin-top: 2px;
 }
 
@@ -595,6 +648,10 @@ body {
 
 .result-stat.incorrect .result-num {
   color: var(--danger);
+}
+
+.result-stat.total .result-num {
+  color: var(--accent-gold);
 }
 
 .results-actions {
